@@ -13,6 +13,8 @@ description: Настройка и диагностика удалённого �
 
 - На ARM64 с Entware `aarch64-3.10` можно использовать TailScaleKeen, если прошивка поддерживает OpkgTun. Установщик и требования проверяй в актуальной документации проекта: https://github.com/Zhanchuraev/TailScaleKeen
 - На MIPSel пакет Entware `tailscale` работал на `moy-router-1011`. Его SSH Entware использует порт 222. Скрипт проекта `setup-headscale.sh` и `Headscale_Keenetic_MIPSel.md` содержат процедуру, но совместимость нового устройства нужно проверять отдельно.
+- На прошитом N6 AX1800 KN-2311 с KeeneticOS 5.0.7 Entware `mipsel-3.4` и TUN пакет Tailscale 1.104.4 подключился как `artur-yuvelir-roditeli`, IP `100.64.0.17`. На момент проверки через Headscale порт XKeenUI `1000` и SSH Entware `222` были доступны по TCP, а панель Keenetic через Serve `:8081` ответила HTTP 200. Успешный вход в SSH и работа после перезагрузки не подтверждены. Для Zashboard предложен Serve `:8083` → `192.168.1.1:9090`, но выполнение и результат не подтверждены.
+- На этом N6 `/opt/bin/grep` завершался с `Bus error`, а `/opt/bin/busybox grep` работал. Причина ошибки не установлена; не объявляй её устранённой и не считай такой сбой общим свойством всех MIPSel.
 - `/dev/net/tun` подтверждает доступность Linux TUN, но не поддержку типа интерфейса KeeneticOS `OpkgTun`. Команда `ndmc -c "interface OpkgTun0"` может изменить конфигурацию. Сообщение `unsupported interface type: "OpkgTun"` подтверждает, что этот тип недоступен в текущей прошивке.
 
 ## Прошивка без OpkgTun
